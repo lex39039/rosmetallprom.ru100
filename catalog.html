@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Каталог металлокассет | РосМеталлПром</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style123.css">
+    
+    <style>
+        /* ============================================ */
+        /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ТОЛЬКО ДЛЯ КАТАЛОГА    */
+        /* ============================================ */
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.3s;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #fbbf24;
+            border-bottom-color: #f59e0b;
+        }
+        
+        .catalog-hero {
+            background: linear-gradient(rgba(15,23,42,0.9), rgba(15,23,42,0.95)), url('images/hero-factory.webp') center/cover;
+            padding: 60px 5%;
+            text-align: center;
+            border-bottom: 3px solid #f59e0b;
+        }
+        .catalog-hero h1 {
+            font-size: 36px;
+            color: white;
+            text-transform: uppercase;
+        }
+        .catalog-hero p {
+            color: #94a3b8;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 10px auto 0;
+        }
+        .catalog-hero .note {
+            color: #fbbf24;
+            font-size: 14px;
+            margin-top: 10px;
+            background: rgba(245,158,11,0.1);
+            padding: 8px 20px;
+            display: inline-block;
+            border-radius: 4px;
+            border-left: 3px solid #f59e0b;
+        }
+        
+        .catalog-container {
+            padding: 40px 5%;
+            background: #0f172a;
+            min-height: 400px;
+        }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        /* ===== ПЛАВНАЯ ЗАГРУЗКА (УБИРАЕМ МИГАНИЕ) ===== */
+        .product-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-top: 4px solid #334155;
+            padding: 20px;
+            border-radius: 3px;
+            color: #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        .product-card:nth-child(1) { animation-delay: 0.05s; }
+        .product-card:nth-child(2) { animation-delay: 0.10s; }
+        .product-card:nth-child(3) { animation-delay: 0.15s; }
+        .product-card:nth-child(4) { animation-delay: 0.20s; }
+        .product-card:nth-child(5) { animation-delay: 0.25s; }
+        .product-card:nth-child(6) { animation-delay: 0.30s; }
+        .product-card:nth-child(7) { animation-delay: 0.35s; }
+        .product-card:nth-child(8) { animation-delay: 0.40s; }
+        .product-card:nth-child(9) { animation-delay: 0.45s; }
+        .product-card:nth-child(10) { animation-delay: 0.50s; }
+        .product-card:nth-child(11) { animation-delay: 0.55s; }
+        .product-card:nth-child(12) { animation-delay: 0.60s; }
+        .product-card:nth-child(13) { animation-delay: 0.65s; }
+        .product-card:nth-child(14) { animation-delay: 0.70s; }
+        .product-card:nth-child(15) { animation-delay: 0.75s; }
+        .product-card:nth-child(16) { animation-delay: 0.80s; }
+        .product-card:nth-child(17) { animation-delay: 0.85s; }
+        .product-card:nth-child(18) { animation-delay: 0.90s; }
+        .product-card:nth-child(19) { animation-delay: 0.95s; }
+        .product-card:nth-child(20) { animation-delay: 1.00s; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .product-card:hover {
+            border-top-color: #f59e0b;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        .product-card h3 {
+            color: #fbbf24;
+            font-size: 16px;
+            margin-bottom: 8px;
+            min-height: 44px;
+        }
+        .product-card ul {
+            padding-left: 18px;
+            font-size: 13px;
+            color: #94a3b8;
+            margin: 8px 0;
+        }
+        .product-card ul li {
+            margin-bottom: 3px;
+        }
+    .product-img {
+    width: 75%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin: 0 auto 10px;
+    display: block;
+    background: #0f172a;
+}
+        
+        .product-price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fbbf24;
+            margin: 8px 0;
+        }
+        .product-price span {
+            font-size: 13px;
+            color: #94a3b8;
+            font-weight: 400;
+        }
+        
+        .product-specs {
+            font-size: 12px;
+            color: #10b981;
+            margin-bottom: 4px;
+        }
+        .product-thickness {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+        
+        .product-order-info {
+            font-size: 12px;
+            color: #f59e0b;
+            margin: 8px 0;
+            padding: 6px 10px;
+            background: rgba(245,158,11,0.1);
+            border-radius: 3px;
+            border-left: 3px solid #f59e0b;
+        }
+        
+        .add-to-cart-btn {
+            background: #f59e0b;
+            color: #0f172a;
+            border: none;
+            padding: 10px;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 8px;
+        }
+        .add-to-cart-btn:hover {
+            background: #d97706;
+            transform: scale(1.02);
+        }
+        .add-to-cart-btn.in-cart {
+            background: #10b981;
+            color: white;
+        }
+        
+        /* ============================================ */
+        /* КОРЗИНА                                      */
+        /* ============================================ */
+        /* ===== КОРЗИНА (ДЕСКТОП) ===== */
+.cart-floating {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #1e293b;
+    border: 2px solid #f59e0b;
+    border-radius: 4px;
+    padding: 14px 18px;
+    min-width: 200px;
+    max-width: 260px;
+    z-index: 9999;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.cart-title {
+    color: #94a3b8;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.cart-total {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fbbf24;
+    margin: 2px 0;
+}
+
+.cart-total span {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+.cart-count {
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+.cart-count strong {
+    color: white;
+}
+
+.cart-empty {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.cart-floating .cta-btn {
+    margin-top: 6px;
+    padding: 8px;
+    font-size: 11px;
+    width: 100%;
+}
+
+.cart-close {
+    position: absolute;
+    top: 3px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cart-close:hover {
+    color: white;
+}
+
+.cart-badge {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background: #ef4444;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    z-index: 9998;
+    box-shadow: 0 4px 15px rgba(239,68,68,0.4);
+    cursor: pointer;
+    border: 2px solid #0f172a;
+}
+
+.cart-badge.hidden {
+    display: none;
+}
+        }
+        .cart-title {
+            color: #94a3b8;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .cart-total {
+            font-size: 26px;
+            font-weight: 900;
+            color: #fbbf24;
+            margin: 4px 0;
+        }
+        .cart-total span {
+            font-size: 14px;
+            color: #94a3b8;
+            font-weight: 400;
+        }
+        .cart-count {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+        .cart-count strong {
+            color: white;
+        }
+        .cart-empty {
+            color: #64748b;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        .cart-floating .cta-btn {
+            margin-top: 8px;
+            padding: 10px;
+            font-size: 12px;
+            width: 100%;
+        }
+        .cart-close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #64748b;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .cart-close:hover {
+            color: white;
+        }
+        .cart-badge {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #ef4444;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            z-index: 9998;
+            box-shadow: 0 4px 15px rgba(239,68,68,0.4);
+            cursor: pointer;
+            border: 2px solid #0f172a;
+        }
+        .cart-badge.hidden {
+            display: none;
+        }
+        
+        /* ============================================ */
+        /* АДАПТИВНОСТЬ                                 */
+        /* ============================================ */
+        @media (max-width: 1024px) {
+            .catalog-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .catalog-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .product-card {
+                padding: 12px;
+            }
+            .product-card h3 {
+                font-size: 13px;
+                min-height: 36px;
+            }
+            .product-img {
+                height: 140px;
+            }
+            .product-price {
+                font-size: 17px;
+            }
+            .product-card ul {
+                font-size: 11px;
+                padding-left: 14px;
+            }
+            .product-card ul li {
+                margin-bottom: 2px;
+            }
+            .catalog-hero h1 {
+                font-size: 24px;
+            }
+            .catalog-hero p {
+                font-size: 15px;
+            }
+            .catalog-hero .note {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .cart-floating {
+                bottom: 15px;
+                right: 15px;
+                left: 15px;
+                min-width: auto;
+                padding: 15px;
+            }
+            .cart-badge {
+                bottom: 85px;
+                right: 15px;
+            }
+            .add-to-cart-btn {
+                font-size: 11px;
+                padding: 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .catalog-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                padding: 0;
+            }
+            .catalog-container {
+                padding: 20px 3%;
+            }
+            .product-card {
+                padding: 10px;
+            }
+            .product-card h3 {
+                font-size: 12px;
+                min-height: 32px;
+            }
+            .product-img {
+                height: 110px;
+            }
+            .product-price {
+                font-size: 15px;
+            }
+            .product-price span {
+                font-size: 10px;
+            }
+            .product-card ul {
+                font-size: 10px;
+                padding-left: 12px;
+                margin: 4px 0;
+            }
+            .add-to-cart-btn {
+                font-size: 10px;
+                padding: 6px;
+            }
+            .catalog-hero {
+                padding: 30px 5%;
+            }
+            .catalog-hero h1 {
+                font-size: 20px;
+            }
+            .catalog-hero p {
+                font-size: 13px;
+            }
+            .catalog-hero .note {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== ШАПКА ===== -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="РосМеталлПром" class="logo-img">
+            Рос<span>Металл</span>Пром
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">Главная</a>
+            <a href="catalog.html" class="active">Каталог</a>
+            <a href="index.html#calculator">Калькулятор</a>
+            <a href="index.html#contacts">Контакты</a>
+        </nav>
+        <div class="header-contacts">
+            <a href="tel:+79520521429" class="header-phone">📞 +7 (952) 052-14-29</a>
+            <a href="mailto:group16161@gmail.com" class="header-email">✉ group16161@gmail.com</a>
+            <div class="geo-badge">
+                <div class="geo-dot"></div>
+                <span>Доставка по <strong>всей России</strong></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== БАННЕР ===== -->
+    <section class="catalog-hero">
+        <h1>Каталог фасадных кассет</h1>
+        <p>Алюминиевые фасадные кассеты от завода. Цены указаны за м².</p>
+        <div class="note">🎨 Цены указаны для базовых цветов RAL. За дополнительной консультацией звоните!</div>
+    </section>
+
+    <!-- ===== КАТАЛОГ ===== -->
+    <section class="catalog-container">
+        <div class="catalog-grid" id="catalogGrid">
+            <!-- Товары вставляются через JavaScript ниже -->
+        </div>
+    </section>
+
+    <!-- ===== КОРЗИНА ===== -->
+    <div class="cart-badge hidden" id="cartBadge">0</div>
+    <div class="cart-floating" id="cartFloating">
+        <button class="cart-close" id="cartClose">✕</button>
+        <div class="cart-title">🛒 Корзина</div>
+        <div class="cart-total" id="cartTotal">0 <span>₽</span></div>
+        <div class="cart-count">Товаров: <strong id="cartCount">0</strong></div>
+        <div class="cart-empty" id="cartEmpty">Корзина пуста</div>
+        <button class="cta-btn cta-btn-phone" onclick="checkout()">📞 Оформить заказ</button>
+        <div style="font-size:10px; color:#64748b; margin-top:6px; text-align:center;">*Цена без учета доставки</div>
+    </div>
+
+    <!-- ===== ПОДВАЛ ===== -->
+    <footer>
+        <div class="footer-contacts">
+            <a href="tel:+79520521429" class="footer-phone">📞 +7 (952) 052-14-29</a>
+            <a href="mailto:group16161@gmail.com">✉ group16161@gmail.com</a>
+            <span style="color:#64748b;">Производство металлокассет</span>
+        </div>
+        <p>&copy;2010-2026 ООО «РосМеталлПром». Все права защищены.</p>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- СКРИПТЫ                                      -->
+    <!-- ============================================ -->
+    <script>
+        // ============================================================
+        // 1. ДАННЫЕ ТОВАРОВ (19 штук — РОМБ УДАЛЁН)
+        // ============================================================
+        const products = [
+            {
+                id: 'prod-01',
+                name: 'Алюминиевые фасадные кассеты открытого типа 1 мм',
+                price: 3327,
+                thickness: '1 мм',
+                category: 'открытого',
+                image: 'images/otkrytyy-1mm.jpg',
+                specs: 'Открытый тип крепления'
+            },
+            {
+                id: 'prod-02',
+                name: 'Алюминиевые фасадные кассеты закрытого типа 1 мм',
+                price: 3338,
+                thickness: '1 мм',
+                category: 'закрытого',
+                image: 'images/zakrytyy-1mm.jpg',
+                specs: 'Скрытый замок'
+            },
+            {
+                id: 'prod-03',
+                name: 'Алюминиевые фасадные кассеты открытого типа 1,5 мм',
+                price: 4648,
+                thickness: '1,5 мм',
+                category: 'открытого',
+                image: 'images/otkrytyy-15mm.jpg',
+                specs: 'Открытый тип крепления'
+            },
+            {
+                id: 'prod-04',
+                name: 'Алюминиевые фасадные кассеты закрытого типа 1,5 мм',
+                price: 4657,
+                thickness: '1,5 мм',
+                category: 'закрытого',
+                image: 'images/zakrytyy-15mm.jpg',
+                specs: 'Скрытый замок'
+            },
+            {
+                id: 'prod-05',
+                name: 'Алюминиевые фасадные кассеты открытого типа 2 мм',
+                price: 5647,
+                thickness: '2 мм',
+                category: 'открытого',
+                image: 'images/otkrytyy-2mm.jpg',
+                specs: 'Открытый тип крепления'
+            },
+            {
+                id: 'prod-06',
+                name: 'Алюминиевые фасадные кассеты закрытого типа 2 мм',
+                price: 5649,
+                thickness: '2 мм',
+                category: 'закрытого',
+                image: 'images/zakrytyy-2mm.jpg',
+                specs: 'Скрытый замок'
+            },
+            {
+                id: 'prod-07',
+                name: 'Алюминиевые фасадные кассеты открытого типа 2,5 мм',
+                price: 6646,
+                thickness: '2,5 мм',
+                category: 'открытого',
+                image: 'images/otkrytyy-25mm.jpg',
+                specs: 'Открытый тип крепления'
+            },
+            {
+                id: 'prod-08',
+                name: 'Алюминиевые фасадные кассеты закрытого типа 2,5 мм',
+                price: 6640,
+                thickness: '2,5 мм',
+                category: 'закрытого',
+                image: 'images/zakrytyy-25mm.jpg',
+                specs: 'Скрытый замок'
+            },
+            {
+                id: 'prod-09',
+                name: 'Алюминиевые фасадные кассеты открытого типа 3 мм',
+                price: 7631,
+                thickness: '3 мм',
+                category: 'открытого',
+                image: 'images/otkrytyy-3mm.jpg',
+                specs: 'Открытый тип крепления'
+            },
+            {
+                id: 'prod-10',
+                name: 'Алюминиевые фасадные кассеты закрытого типа 3 мм',
+                price: 7645,
+                thickness: '3 мм',
+                category: 'закрытого',
+                image: 'images/zakrytyy-3mm.jpg',
+                specs: 'Скрытый замок'
+            },
+            {
+                id: 'prod-11',
+                name: 'Объемная кассета "Звезда"',
+                price: 0,
+                thickness: 'индивидуально',
+                category: 'объемные',
+                image: 'images/zvezda.jpg',
+                specs: '🎨 3D-кассета'
+            },
+            {
+                id: 'prod-12',
+                name: 'Объемная кассета "Ракушки"',
+                price: 0,
+                thickness: 'индивидуально',
+                category: 'объемные',
+                image: 'images/rakushki.jpg',
+                specs: '🎨 3D-кассета'
+            },
+            // РОМБ УДАЛЁН
+            {
+                id: 'prod-14',
+                name: 'Объемная кассета "Треугольники"',
+                price: 0,
+                thickness: 'индивидуально',
+                category: 'объемные',
+                image: 'images/treugolniki.jpg',
+                specs: '🎨 3D-кассета'
+            },
+            {
+                id: 'prod-15',
+                name: 'Объемная кассета "Чешуя"',
+                price: 0,
+                thickness: 'индивидуально',
+                category: 'объемные',
+                image: 'images/cheshuya.jpg',
+                specs: '🎨 3D-кассета'
+            },
+            {
+                id: 'prod-16',
+                name: 'Кассета фасадная перфорированная',
+                price: 4200,
+                thickness: '1,5 мм',
+                category: 'открытого',
+                image: 'images/perforirovannaya.jpg',
+                specs: 'Перфорация, дизайн-решение'
+            },
+            {
+                id: 'prod-17',
+                name: 'Кассета фасадная с покрытием "Стальной бархат"',
+                price: 5100,
+                thickness: '1,2 мм',
+                category: 'закрытого',
+                image: 'images/stalnoy-barhat.jpg',
+                specs: 'Скрытый замок, премиум-покрытие'
+            },
+            {
+                id: 'prod-18',
+                name: 'Кассета фасадная корзина (сетчатая)',
+                price: 4800,
+                thickness: '1,2 мм',
+                category: 'открытого',
+                image: 'images/korzina.jpg',
+                specs: 'Вентилируемый фасад'
+            },
+            {
+                id: 'prod-19',
+                name: 'Доборный элемент — карнизная планка',
+                price: 1111,
+                thickness: '0,7 мм',
+                category: 'доборные',
+                image: 'images/karniz.jpg',
+                specs: 'Доборный элемент'
+            },
+            {
+                id: 'prod-20',
+                name: 'Доборный элемент — конек кровельный',
+                price: 430,
+                thickness: '0,7 мм',
+                category: 'доборные',
+                image: 'images/konek.jpg',
+                specs: 'Доборный элемент'
+            }
+        ];
+
+        // ============================================================
+        // 2. КОРЗИНА
+        // ============================================================
+        let cart = [];
+
+        function loadCart() {
+            const saved = localStorage.getItem('catalogCart');
+            if (saved) { try { cart = JSON.parse(saved); } catch (e) { cart = []; } }
+            updateCartUI();
+        }
+
+        function saveCart() {
+            localStorage.setItem('catalogCart', JSON.stringify(cart));
+        }
+
+        function addToCart(productId, name, price) {
+            if (price === 0 || isNaN(price)) {
+                alert('📞 Цена по запросу. Свяжитесь с нами для расчета!');
+                return;
+            }
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ id: productId, name: name, price: price, quantity: 1 });
+            }
+            saveCart();
+            updateCartUI();
+            document.querySelectorAll(`.add-to-cart-btn[data-id="${productId}"]`).forEach(btn => {
+                btn.classList.add('in-cart');
+                btn.textContent = '✅ В корзине';
+                setTimeout(() => {
+                    btn.textContent = '➕ Добавить';
+                    btn.classList.remove('in-cart');
+                }, 1200);
+            });
+        }
+
+        function updateCartUI() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartTotal').innerHTML = total.toLocaleString('ru-RU') + ' <span>₽</span>';
+            document.getElementById('cartCount').textContent = count;
+            const badge = document.getElementById('cartBadge');
+            if (count > 0) {
+                badge.textContent = count;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+            document.getElementById('cartEmpty').style.display = count > 0 ? 'none' : 'block';
+        }
+
+        // ============================================================
+        // 3. ОФОРМЛЕНИЕ ЗАКАЗА → ЗВОНОК ПО ТЕЛЕФОНУ
+        // ============================================================
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Корзина пуста');
+                return;
+            }
+            // Открываем набор номера
+            window.location.href = 'tel:+79520521429';
+        }
+
+        // ============================================================
+        // 4. ОТОБРАЖЕНИЕ ТОВАРОВ
+        // ============================================================
+        function renderCatalog() {
+            const grid = document.getElementById('catalogGrid');
+            grid.innerHTML = '';
+
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+
+                const isCustom = product.price === 0 || isNaN(product.price);
+                const priceDisplay = isCustom ? 'По запросу' : product.price.toLocaleString('ru-RU');
+
+                const descItems = `
+                    <li>${product.specs}</li>
+                    <li>Толщина: ${product.thickness}</li>
+                    <li>Материал: алюминий</li>
+                `;
+
+                const typeLabels = {
+                    'открытого': '🔓 Открытый тип',
+                    'закрытого': '🔒 Скрытый замок',
+                    'объемные': '🎨 3D-кассета',
+                    'доборные': '🧩 Доборный элемент'
+                };
+
+                card.innerHTML = `
+                    <img src="${product.image}" 
+                         alt="${product.name}" 
+                         class="product-img" 
+                         loading="lazy"
+                         onerror="this.src='images/placeholder.jpg'">
+                    <h3>${product.name}</h3>
+                    <div class="product-specs">${typeLabels[product.category] || ''}</div>
+                    <div class="product-thickness">📐 Толщина: ${product.thickness}</div>
+                    <ul>${descItems}</ul>
+                    <div class="product-price">${priceDisplay} <span>₽/м²</span></div>
+                    ${isCustom ? '<div class="product-order-info">📞 Цена по запросу — свяжитесь с нами</div>' : ''}
+                    <button class="add-to-cart-btn" data-id="${product.id}" onclick="addToCart('${product.id}', '${product.name.replace(/'/g, "\\'")}', ${product.price})">
+                        ${isCustom ? '📞 Запросить цену' : '➕ Добавить в корзину'}
+                    </button>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // ============================================================
+        // 5. УПРАВЛЕНИЕ КОРЗИНОЙ
+        // ============================================================
+        document.getElementById('cartClose').addEventListener('click', function() {
+            const floating = document.getElementById('cartFloating');
+            floating.style.display = floating.style.display === 'none' ? 'block' : 'none';
+        });
+        document.getElementById('cartBadge').addEventListener('click', function() {
+            document.getElementById('cartFloating').style.display = 'block';
+        });
+
+        // ============================================================
+        // 6. ЗАПУСК
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCart();
+            renderCatalog();
+        });
+    </script>
+    <!-- ===== КНОПКА-ЛИПУЧКА "ПОЗВОНИТЬ" ===== -->
+<a href="tel:+79520521429" class="sticky-call-btn" aria-label="Позвонить">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+    </svg>
+    <span class="call-text">Позвонить</span>
+</a>
+
+</body>
+</html>
