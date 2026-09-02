@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    
+    <!-- ========================================= -->
+    <!-- SEO: ОСНОВНЫЕ МЕТА-ТЕГИ                   -->
+    <!-- ========================================= -->
+    <title>Калькулятор металлокассет — рассчитать стоимость фасадных кассет в Ростове-на-Дону | РосМеталлПром</title>
+    <meta name="description" content="Калькулятор металлокассет от производителя в Ростове-на-Дону. Рассчитайте стоимость фасадных кассет для вентилируемого фасада. Цена от 2 100 ₽/м². Доставка по РФ, ЛНР, ДНР.">
+    <meta name="keywords" content="калькулятор металлокассет, рассчитать стоимость металлокассет, металлокассеты цена, фасадные кассеты Ростов-на-Дону, купить металлокассеты, вентилируемый фасад, производство металлокассет Россия">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://rosmetallprom.ru/calculator.html">
+    
+    <!-- ========================================= -->
+    <!-- OPEN GRAPH                                 -->
+    <!-- ========================================= -->
+    <meta property="og:title" content="Калькулятор металлокассет | РосМеталлПром">
+    <meta property="og:description" content="Рассчитайте стоимость металлокассет для вентилируемого фасада. Производство в Ростове-на-Дону. Доставка по РФ.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rosmetallprom.ru/calculator.html">
+    <meta property="og:site_name" content="РосМеталлПром">
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style123.css">
+    
+    <style>
+        /* ================================================ */
+        /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ КАЛЬКУЛЯТОРА */
+        /* ================================================ */
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-right: 20px;
+        }
+        .nav-menu a {
+            color: #ffffff !important;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.3s;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #fbbf24 !important;
+            border-bottom-color: #f59e0b;
+        }
+        
+        /* ===== ГЕРОЙ КАЛЬКУЛЯТОРА ===== */
+        .calculator-hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.95)), 
+                        url('images/hero-factory.webp') center/cover;
+            padding: 50px 5% 40px;
+            text-align: center;
+            border-bottom: 3px solid #f59e0b;
+        }
+        .calculator-hero h1 {
+            font-size: 38px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .calculator-hero h1 span {
+            color: #fbbf24;
+        }
+        .calculator-hero p {
+            color: #94a3b8;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 10px auto 0;
+        }
+        .calculator-hero .delivery-badge {
+            display: inline-block;
+            margin-top: 12px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* ===== КАЛЬКУЛЯТОР ===== */
+        .calculator-main {
+            padding: 50px 5% 60px;
+            background: #0f172a;
+        }
+        .calculator-main .calculator-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #1e293b;
+            padding: 35px 40px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            border-top: 4px solid #f59e0b;
+        }
+        .calculator-main .calculator-field {
+            margin-bottom: 18px;
+        }
+        .calculator-main .calculator-field label {
+            display: block;
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        .calculator-main .calculator-field select,
+        .calculator-main .calculator-field input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .calculator-main .calculator-field select:focus,
+        .calculator-main .calculator-field input:focus {
+            border-color: #f59e0b;
+            outline: none;
+        }
+        .calculator-main .calculator-field input {
+            -moz-appearance: textfield;
+        }
+        .calculator-main .calculator-field input::-webkit-outer-spin-button,
+        .calculator-main .calculator-field input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+        
+        .calculator-main .calculator-result {
+            background: #0f172a;
+            padding: 25px 30px;
+            border-radius: 6px;
+            margin-top: 25px;
+            border-left: 4px solid #f59e0b;
+        }
+        .calculator-main .result-label {
+            color: #94a3b8;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .calculator-main .result-price {
+            font-size: 34px;
+            font-weight: 900;
+            color: #fbbf24;
+            margin: 8px 0;
+        }
+        .calculator-main .result-price span {
+            font-size: 18px;
+            color: #94a3b8;
+            font-weight: 400;
+        }
+        .calculator-main .result-text {
+            color: #cbd5e1;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        .calculator-main .result-text strong {
+            color: #10b981;
+        }
+        
+        .calculator-main .cta-btn {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            padding: 16px;
+            font-size: 18px;
+        }
+        .calculator-main .calc-note {
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            margin-top: 12px;
+        }
+        
+        /* ===== БЛОК ПРЕИМУЩЕСТВ ===== */
+        .advantages-section {
+            padding: 50px 5%;
+            background: #1e293b;
+            border-top: 1px solid #334155;
+            border-bottom: 1px solid #334155;
+        }
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .advantage-item {
+            text-align: center;
+            padding: 20px;
+            background: #0f172a;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
+        .advantage-item:hover {
+            border-color: #f59e0b;
+            transform: translateY(-3px);
+        }
+        .advantage-item .icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .advantage-item h4 {
+            color: #fbbf24;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+        .advantage-item p {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        /* ===== СТАТЬИ / БЛОГ ===== */
+        .blog-section {
+            padding: 50px 5% 60px;
+            background: #0f172a;
+        }
+        .blog-section .section-title {
+            color: white;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .blog-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+        .blog-card:hover {
+            border-color: #f59e0b;
+            transform: translateY(-3px);
+        }
+        .blog-card .blog-tag {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .blog-card h4 {
+            color: white;
+            font-size: 17px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .blog-card p {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .blog-card .blog-content {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #334155;
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .blog-card .blog-content.show {
+            display: block;
+        }
+        .blog-card .blog-toggle {
+            display: inline-block;
+            color: #fbbf24;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            margin-top: 8px;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        .blog-card .blog-toggle:hover {
+            color: #f59e0b;
+        }
+        .blog-card .blog-toggle::after {
+            content: ' ▼';
+            font-size: 10px;
+        }
+        .blog-card .blog-toggle.active::after {
+            content: ' ▲';
+        }
+        
+        /* ===== FAQ ===== */
+        .faq-section {
+            padding: 50px 5% 60px;
+            background: #1e293b;
+            border-top: 1px solid #334155;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid #334155;
+            padding: 18px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item .question {
+            color: #fbbf24;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item .question::after {
+            content: '+';
+            font-size: 22px;
+            color: #94a3b8;
+            transition: 0.3s;
+        }
+        .faq-item .question.active::after {
+            content: '−';
+        }
+        .faq-item .answer {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 8px;
+            display: none;
+        }
+        .faq-item .answer.show {
+            display: block;
+        }
+        
+        /* ===== ОБЪЕКТЫ В РОСТОВЕ ===== */
+        .objects-mini-section {
+            padding: 50px 5%;
+            background: #0f172a;
+            border-top: 1px solid #334155;
+        }
+        .objects-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .object-mini-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+        }
+        .object-mini-card .object-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+        .object-mini-card h4 {
+            color: white;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .object-mini-card p {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+        .object-mini-card .object-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-top: 6px;
+        }
+        
+        /* ===== АДАПТИВ ===== */
+        @media screen and (max-width: 768px) {
+            .calculator-hero h1 {
+                font-size: 24px;
+            }
+            .calculator-hero p {
+                font-size: 15px;
+            }
+            .calculator-hero .delivery-badge {
+                font-size: 11px;
+                padding: 4px 14px;
+            }
+            .calculator-main .calculator-container {
+                padding: 20px 16px;
+            }
+            .calculator-main .result-price {
+                font-size: 26px;
+            }
+            .calculator-main .cta-btn {
+                font-size: 15px;
+                padding: 14px;
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .advantages-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .objects-mini-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            /* Компактная шапка для каталога */
+            header {
+                padding: 4px 3% !important;
+                gap: 4px !important;
+                flex-wrap: wrap !important;
+            }
+            .logo {
+                font-size: 14px !important;
+                gap: 4px !important;
+            }
+            .logo-img {
+                height: 24px !important;
+            }
+            .nav-menu {
+                gap: 8px !important;
+                margin: 0 !important;
+                order: 3 !important;
+                width: 100% !important;
+                justify-content: center !important;
+                border-top: 1px solid #1e293b !important;
+                padding-top: 4px !important;
+            }
+            .nav-menu a {
+                font-size: 9px !important;
+                padding: 2px 0 !important;
+            }
+            .header-contacts {
+                gap: 6px !important;
+                flex-wrap: wrap !important;
+                justify-content: flex-end !important;
+                flex: 1 !important;
+            }
+            .header-phone {
+                font-size: 12px !important;
+                gap: 3px !important;
+            }
+            .header-email {
+                font-size: 9px !important;
+                display: none !important;
+            }
+            .geo-badge {
+                font-size: 8px !important;
+                padding: 2px 6px !important;
+                display: none !important;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .calculator-hero h1 {
+                font-size: 20px;
+            }
+            .calculator-main .calculator-container {
+                padding: 16px 12px;
+            }
+            .calculator-main .result-price {
+                font-size: 22px;
+            }
+            .calculator-main .cta-btn {
+                font-size: 13px;
+                padding: 12px;
+            }
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+            .objects-mini-grid {
+                grid-template-columns: 1fr;
+            }
+            header {
+                padding: 2px 3% !important;
+            }
+            .logo {
+                font-size: 12px !important;
+            }
+            .logo-img {
+                height: 20px !important;
+            }
+            .nav-menu a {
+                font-size: 8px !important;
+            }
+            .header-phone {
+                font-size: 10px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================= -->
+    <!-- ШАПКА                                     -->
+    <!-- ========================================= -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="РосМеталлПром — производство металлокассет" class="logo-img">
+            Рос<span>Металл</span>Пром
+        </div>
+        <nav class="nav-menu">
+            <a href="index.html">Главная</a>
+            <a href="catalog.html">Каталог</a>
+            <a href="calculator.html" class="active">Калькулятор</a>
+            <a href="index.html#contacts">Контакты</a>
+        </nav>
+        <div class="header-contacts">
+            <a href="tel:+79520521429" class="header-phone">📞 +7 (952) 052-14-29</a>
+            <a href="mailto:group16161@gmail.com" class="header-email">✉ group16161@gmail.com</a>
+            <div class="geo-badge">
+                <div class="geo-dot"></div>
+                <span>Доставка по <strong>всей России, ЛНР, ДНР</strong></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================= -->
+    <!-- ГЕРОЙ СТРАНИЦЫ КАЛЬКУЛЯТОРА              -->
+    <!-- ========================================= -->
+    <section class="calculator-hero">
+        <h1>🧮 КАЛЬКУЛЯТОР <span>МЕТАЛЛОКАССЕТ</span></h1>
+        <p>Рассчитайте точную стоимость фасадных кассет для вашего объекта в Ростове-на-Дону и по всей России</p>
+        <div class="delivery-badge">🚚 Открыты поставки в ЛНР и ДНР</div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- ОСНОВНОЙ БЛОК КАЛЬКУЛЯТОРА               -->
+    <!-- ========================================= -->
+    <section class="calculator-main">
+        <div class="calculator-container">
+            <div class="calculator-field">
+                <label for="calc-type">📐 Тип металлокассет</label>
+                <select id="calc-type">
+                    <option value="2100">Открытого типа (оцинкованная сталь) — от 2 100 ₽/м²</option>
+                    <option value="2450">Закрытого типа (скрытый замок) — от 2 450 ₽/м²</option>
+                    <option value="3800">Сложные 3D / перфорированные — от 3 800 ₽/м²</option>
+                </select>
+            </div>
+
+            <div class="calculator-field">
+                <label for="calc-thickness">📏 Толщина металла</label>
+                <select id="calc-thickness">
+                    <option value="1.0">1.0 мм (стандарт)</option>
+                    <option value="1.2">1.2 мм (+20% к стоимости)</option>
+                    <option value="1.5">1.5 мм (+45% для высотных объектов)</option>
+                </select>
+            </div>
+
+            <div class="calculator-field">
+                <label for="calc-volume">📦 Объём партии (м²)</label>
+                <input type="number" id="calc-volume" value="500" min="50" step="10">
+            </div>
+
+            <div class="calculator-result" id="calcResult">
+                <div class="result-label">💰 Предварительная стоимость</div>
+                <div class="result-price" id="calcPrice">1 050 000 <span>₽</span></div>
+                <div class="result-text">⚖️ Вес: <strong id="calcWeight">4.2 тонн</strong></div>
+                <div class="result-text">🚛 Доставка: <strong id="calcTrucks">1 еврофура (до 20т)</strong></div>
+            </div>
+
+            <a href="tel:+79520521429" class="cta-btn cta-btn-phone" onclick="trackCalculator()">
+                📞 УТОЧНИТЬ ТОЧНУЮ СТОИМОСТЬ
+            </a>
+            <div class="calc-note">*Цена указана без учёта доставки. Для объектов в Ростове-на-Дону — доставка рассчитывается индивидуально.</div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- ПРЕИМУЩЕСТВА ЗАВОДА                      -->
+    <!-- ========================================= -->
+    <section class="advantages-section">
+        <div class="advantages-grid">
+            <div class="advantage-item">
+                <div class="icon">🏭</div>
+                <h4>Производство в России</h4>
+                <p>Собственный завод металлокассет в Ростове-на-Дону. Полный цикл изготовления под заказ.</p>
+            </div>
+            <div class="advantage-item">
+                <div class="icon">📦</div>
+                <h4>От 50 м²</h4>
+                <p>Изготавливаем металлокассеты партиями от 50 м². Работаем с объектами любого масштаба.</p>
+            </div>
+            <div class="advantage-item">
+                <div class="icon">🚚</div>
+                <h4>Доставка по РФ и СНГ</h4>
+                <p>Поставляем металлокассеты в Ростов-на-Дону, Москву, Краснодар, Новосибирск, ЛНР и ДНР.</p>
+            </div>
+            <div class="advantage-item">
+                <div class="icon">✅</div>
+                <h4>ГОСТ Р 58154-2018</h4>
+                <p>Вся продукция сертифицирована. Соответствие техническим регламентам и стандартам качества.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- СТАТЬИ / БЛОГ (С РАСКРЫТИЕМ)             -->
+    <!-- ========================================= -->
+    <section class="blog-section">
+        <h2 class="section-title" style="color: white;">📝 Полезные статьи о металлокассетах</h2>
+        <div class="blog-grid">
+            
+            <div class="blog-card">
+                <span class="blog-tag">Советы</span>
+                <h4>Как выбрать металлокассеты для вентилируемого фасада?</h4>
+                <p style="color:#94a3b8; font-size:13px;">Краткий анонс: на что обратить внимание при выборе фасадных кассет...</p>
+                <button class="blog-toggle" onclick="toggleBlog(this)">Читать</button>
+                <div class="blog-content">
+                    <p><strong>Выбор металлокассет — важный этап при строительстве вентилируемого фасада.</strong> В Ростове-на-Дону и по всей России мы сталкиваемся с разными климатическими условиями, поэтому к выбору материала нужно подходить ответственно.</p>
+                    <p><strong>1. Толщина металла.</strong> Оптимальная толщина для фасадных кассет — от 1,0 до 1,5 мм. Для высотных объектов в Ростове-на-Дону рекомендуем 1,5 мм — это обеспечивает ветровую устойчивость.</p>
+                    <p><strong>2. Тип кассет.</strong> Открытые — проще в монтаже, закрытые — идеально ровный фасад. В Ростове-на-Дону чаще выбирают закрытые для жилых комплексов и бизнес-центров.</p>
+                    <p><strong>3. Покрытие RAL.</strong> Мы работаем со всеми цветами. Базовые: RAL 7004, 7016, 9002, 3001, 5005. Любой нестандартный оттенок — под заказ.</p>
+                    <p><strong>Где купить металлокассеты в Ростове-на-Дону?</strong> Обращайтесь в РосМеталлПром — производство металлокассет от завода с доставкой по всей России.</p>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <span class="blog-tag">Производство</span>
+                <h4>Металлокассеты от производителя: почему это выгодно?</h4>
+                <p style="color:#94a3b8; font-size:13px;">Покупая металлокассеты напрямую с завода в Ростове-на-Дону...</p>
+                <button class="blog-toggle" onclick="toggleBlog(this)">Читать</button>
+                <div class="blog-content">
+                    <p><strong>Покупка металлокассет напрямую от производителя — это экономия до 30%.</strong> Многие компании в Ростове-на-Дону работают через посредников, что увеличивает стоимость фасадных кассет.</p>
+                    <p><strong>Почему стоит выбрать завод РосМеталлПром?</strong></p>
+                    <p>✅ Собственное производство в Ростове-на-Дону — контроль качества на каждом этапе.</p>
+                    <p>✅ Сертификация по ГОСТ Р 58154-2018 — продукция соответствует всем нормам.</p>
+                    <p>✅ Гибкая система скидок для крупных заказов — чем больше объём, тем ниже цена металлокассет за м².</p>
+                    <p>✅ Доставка металлокассет по России, в ЛНР и ДНР — логистика отлажена годами.</p>
+                    <p><strong>Купить металлокассеты в Ростове-на-Дону</strong> по цене производителя — это выбор профессиональных строителей и девелоперов.</p>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <span class="blog-tag">Технологии</span>
+                <h4>Вентилируемый фасад из металлокассет: конструкция и монтаж</h4>
+                <p style="color:#94a3b8; font-size:13px;">Как устроен вентилируемый фасад, какие кассеты лучше использовать...</p>
+                <button class="blog-toggle" onclick="toggleBlog(this)">Читать</button>
+                <div class="blog-content">
+                    <p><strong>Вентилируемый фасад — это современное решение для зданий любого назначения.</strong> В Ростове-на-Дону этот тип фасадов становится всё популярнее благодаря своим эксплуатационным характеристикам.</p>
+                    <p><strong>Конструкция вентфасада:</strong> несущий каркас, утеплитель, ветрозащита, направляющие, фасадные кассеты. Металлокассеты крепятся на подсистему открытым или скрытым способом.</p>
+                    <p><strong>Преимущества вентилируемого фасада из металлокассет:</strong></p>
+                    <p>💨 Естественная вентиляция — отсутствие конденсата и плесени.</p>
+                    <p>🔥 Пожаробезопасность — класс К0/НГ.</p>
+                    <p>🌡️ Термоизоляция — экономия на отоплении до 30%.</p>
+                    <p>🎨 Эстетика — любой цвет RAL и форма кассет.</p>
+                    <p><strong>Где заказать вентилируемый фасад в Ростове-на-Дону?</strong> РосМеталлПром предлагает металлокассеты под ключ с доставкой и монтажом.</p>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <span class="blog-tag">Цены</span>
+                <h4>Цена металлокассет: из чего складывается стоимость?</h4>
+                <p style="color:#94a3b8; font-size:13px;">Разбираем, что влияет на цену фасадных кассет в Ростове-на-Дону...</p>
+                <button class="blog-toggle" onclick="toggleBlog(this)">Читать</button>
+                <div class="blog-content">
+                    <p><strong>Стоимость металлокассет формируется из нескольких ключевых факторов.</strong> В Ростове-на-Дону цена может варьироваться в зависимости от производителя и условий поставки.</p>
+                    <p><strong>Факторы, влияющие на цену металлокассет:</strong></p>
+                    <p>📐 <strong>Толщина металла</strong> — от 1,0 мм (дешевле) до 1,5 мм (дороже, но надёжнее).</p>
+                    <p>🏷️ <strong>Тип кассет</strong> — открытые от 2 100 ₽/м², закрытые от 2 450 ₽/м², 3D от 3 800 ₽/м².</p>
+                    <p>🎨 <strong>Покрытие RAL</strong> — стандартные цвета дешевле, нестандартные — дороже.</p>
+                    <p>📦 <strong>Объём заказа</strong> — чем больше площадь, тем ниже цена металлокассет за м².</p>
+                    <p>🚚 <strong>Доставка</strong> — в Ростове-на-Дону и области доставка рассчитывается индивидуально.</p>
+                    <p><strong>Актуальные цены металлокассет в Ростове-на-Дону</strong> можно рассчитать в калькуляторе на этой странице. Звоните, чтобы уточнить стоимость под ваш объект!</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- ОБЪЕКТЫ В РОСТОВЕ-НА-ДОНУ                -->
+    <!-- ========================================= -->
+    <section class="objects-mini-section">
+        <h2 class="section-title" style="color: white;">🏗️ Наши объекты в Ростове-на-Дону</h2>
+        <div class="objects-mini-grid">
+            <div class="object-mini-card">
+                <div class="object-icon">🏢</div>
+                <h4>ЖК «Меридиан Юг»</h4>
+                <p>14 200 м² фасадных кассет закрытого типа</p>
+                <span class="object-badge">Сдано</span>
+            </div>
+            <div class="object-mini-card">
+                <div class="object-icon">🏭</div>
+                <h4>Логистический хаб «Урал-Восток»</h4>
+                <p>32 000 м² открытого типа, RAL 7016/9006</p>
+                <span class="object-badge">Сдано</span>
+            </div>
+            <div class="object-mini-card">
+                <div class="object-icon">🔬</div>
+                <h4>Сибирский Центр Биотехнологий</h4>
+                <p>8 900 м² 3D-кассет из алюминия</p>
+                <span class="object-badge">В работе</span>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:25px;">
+            <a href="catalog.html" class="cta-btn" style="display:inline-block; padding:12px 40px;">📋 Смотреть полный каталог</a>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- FAQ / ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ           -->
+    <!-- ========================================= -->
+    <section class="faq-section">
+        <h2 class="section-title" style="color: white;">❓ Часто задаваемые вопросы</h2>
+        <div class="faq-container">
+            
+            <div class="faq-item">
+                <div class="question">Какие металлокассеты лучше: открытые или закрытые?</div>
+                <div class="answer">Открытые кассеты проще в монтаже и демонтаже, подходят для промышленных объектов. Закрытые — с идеально ровной поверхностью, рекомендуются для жилых комплексов и бизнес-центров. В Ростове-на-Дону чаще выбирают закрытые для премиум-объектов.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">Какой минимальный заказ металлокассет?</div>
+                <div class="answer">Минимальный объём партии — 50 м². Производство в Ростове-на-Дону позволяет быстро изготовить и доставить заказ по всей России, в ЛНР и ДНР.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">Сколько стоят металлокассеты за м²?</div>
+                <div class="answer">Цена металлокассет зависит от типа, толщины и покрытия. Открытые кассеты — от 2 100 ₽/м², закрытые — от 2 450 ₽/м², 3D-кассеты — от 3 800 ₽/м². Точную стоимость можно рассчитать в калькуляторе на этой странице.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">Есть ли доставка металлокассет в другие города?</div>
+                <div class="answer">Да, мы доставляем металлокассеты по всей России, в том числе в Москву, Краснодар, Новосибирск, а также в ЛНР и ДНР. Собственные логистические хабы гарантируют быструю отгрузку.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">Какие цвета RAL доступны для фасадных кассет?</div>
+                <div class="answer">Мы работаем со всеми цветами RAL. Базовые цвета: RAL 7004, 7016, 9002, 3001, 5005. Любой нестандартный оттенок — под заказ. Для объектов в Ростове-на-Дону доступен выезд веера RAL.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">Как заказать металлокассеты в Ростове-на-Дону?</div>
+                <div class="answer">Просто оставьте заявку на сайте, рассчитайте стоимость в калькуляторе или позвоните по телефону +7 (952) 052-14-29. Наши менеджеры в Ростове-на-Дону проконсультируют вас и помогут с выбором.</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- ПОДВАЛ                                    -->
+    <!-- ========================================= -->
+    <footer>
+        <div class="footer-contacts">
+            <a href="tel:+79520521429" class="footer-phone">📞 +7 (952) 052-14-29</a>
+            <a href="mailto:group16161@gmail.com">✉ group16161@gmail.com</a>
+            <span style="color:#64748b;">Производство металлокассет в Ростове-на-Дону</span>
+        </div>
+        <p>&copy;2010-2026 ООО «РосМеталлПром». Все права защищены.</p>
+        <p style="margin-top:8px; font-size:12px; color:#64748b;">
+            Поставки металлокассет по всей России, в ЛНР и ДНР. Сделано в Ростове-на-Дону.
+        </p>
+    </footer>
+
+    <!-- ========================================= -->
+    <!-- СКРИПТЫ                                   -->
+    <!-- ========================================= -->
+    <script>
+        // ============================================================
+        // 1. КАЛЬКУЛЯТОР
+        // ============================================================
+        function calculate() {
+            const basePrice = parseFloat(document.getElementById('calc-type').value);
+            const thickness = parseFloat(document.getElementById('calc-thickness').value);
+            const volume = parseFloat(document.getElementById('calc-volume').value) || 0;
+
+            let multiplier = 1.0;
+            if (thickness === 1.2) multiplier = 1.2;
+            if (thickness === 1.5) multiplier = 1.45;
+
+            const total = Math.round(basePrice * multiplier * volume);
+            const weight = ((volume * 8.5 * (thickness / 1.0)) / 1000).toFixed(1);
+            const trucks = Math.ceil(weight / 20);
+
+            document.getElementById('calcPrice').innerHTML = total.toLocaleString('ru-RU') + ' <span>₽</span>';
+            document.getElementById('calcWeight').innerHTML = '⚖️ ' + weight + ' <span style="font-size:12px; color:#94a3b8;">тонн</span>';
+            document.getElementById('calcTrucks').innerHTML = '🚛 ' + trucks + ' <span style="font-size:12px; color:#94a3b8;">еврофура(ы) (до 20т)</span>';
+        }
+
+        document.getElementById('calc-type').addEventListener('change', calculate);
+        document.getElementById('calc-thickness').addEventListener('change', calculate);
+        document.getElementById('calc-volume').addEventListener('input', calculate);
+
+        // ============================================================
+        // 2. КНОПКА "УТОЧНИТЬ СТОИМОСТЬ" — ОТПРАВКА В МЕТРИКУ / АНАЛИТИКУ
+        // ============================================================
+        function trackCalculator() {
+            const price = document.getElementById('calcPrice').innerText;
+            const volume = document.getElementById('calc-volume').value;
+            console.log('📊 Расчёт отправлен: ' + volume + ' м², стоимость: ' + price);
+            // Здесь можно добавить отправку в Яндекс.Метрику, Google Analytics и т.д.
+        }
+
+        // ============================================================
+        // 3. FAQ (открытие/закрытие ответов)
+        // ============================================================
+        document.querySelectorAll('.faq-item .question').forEach(function(q) {
+            q.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                answer.classList.toggle('show');
+                this.classList.toggle('active');
+            });
+        });
+
+        // ============================================================
+        // 4. РАСКРЫТИЕ СТАТЕЙ (ТЕПЕРЬ РАБОТАЕТ!)
+        // ============================================================
+        function toggleBlog(btn) {
+            const content = btn.nextElementSibling;
+            const isOpen = content.classList.contains('show');
+            
+            // Закрываем все остальные статьи, чтобы не было кучи открытых
+            document.querySelectorAll('.blog-content').forEach(el => {
+                el.classList.remove('show');
+            });
+            document.querySelectorAll('.blog-toggle').forEach(el => {
+                el.classList.remove('active');
+                el.textContent = 'Читать';
+            });
+            
+            // Открываем текущую, если она была закрыта
+            if (!isOpen) {
+                content.classList.add('show');
+                btn.classList.add('active');
+                btn.textContent = 'Скрыть';
+            }
+        }
+
+        // ============================================================
+        // 5. ЗАПУСК КАЛЬКУЛЯТОРА ПРИ ЗАГРУЗКЕ
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            calculate();
+        });
+    </script>
+
+</body>
+</html>
